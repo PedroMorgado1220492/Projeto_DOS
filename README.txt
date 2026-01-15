@@ -39,22 +39,3 @@ json para POST no Swagger UI:
   "tableNumber": 8,
   "numberOfPeople": 6
 }
-
-
-TESTES IMPLEMENTADOS:
-Models/ReservationTests.cs (3 testes)
-1. Reservation_Should_Have_Default_CreatedAt - Verifica data criação automática
-2. Reservation_Should_Set_CustomerName("João Silva") - Testa atribuição nome
-3. Reservation_Should_Set_CustomerName("Maria Santos") - Segundo caso de nome
-
-DTOs/ReservationDtoTests.cs (2 testes)
-4. CreateReservationDto_Validation_Should_Fail_When_Empty - Validação falha sem dados
-5. CreateReservationDto_Validation_Should_Pass_When_Valid - Validação passa com dados válidos
-
-Services/ReservationServiceTests.cs (6 testes)
-6. CreateReservationAsync_Should_Create_Reservation - Cria reserva básica
-7. CreateReservationAsync_Should_Throw_When_TimeConflict - CONFLITO HORÁRIO (teste crítico)
-8. GetAllReservationsAsync_Should_Return_All_Reservations - Lista todas reservas
-9. GetReservationByIdAsync_Should_Return_Null_For_Invalid_Id - ID inválido retorna null
-10. DeleteReservationAsync_Should_Return_False_For_Invalid_Id - Delete falha com ID inválido
-11. ReservationServiceTests (setup/constructor) - Configuração ambiente teste
