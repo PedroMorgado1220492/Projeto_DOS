@@ -1,16 +1,16 @@
 Para executar a API:
 
-cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS-1\RestaurantReservations\src\RestaurantReservations.API"
+cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS\RestaurantReservations\src\RestaurantReservations.API"
 dotnet run
 Acessar: http://localhost:5188/swagger
 
 Para executar testes:
 
-cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS-1\RestaurantReservations\tests\RestaurantReservations.UnitTests"
-dotnet test
+cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS\RestaurantReservations\tests\RestaurantReservations.UnitTests"
+dotnet test --collect:"XPlat Code Coverage"
 
 Para verificar Docker:
-cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS-1\RestaurantReservations"
+cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS\RestaurantReservations"
 docker-compose up -d sqlserver
 
 

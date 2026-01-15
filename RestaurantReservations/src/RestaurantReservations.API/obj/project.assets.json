@@ -5176,11 +5176,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS-1\\RestaurantReservations\\src\\RestaurantReservations.API\\RestaurantReservations.API.csproj",
+      "projectUniqueName": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS\\RestaurantReservations\\src\\RestaurantReservations.API\\RestaurantReservations.API.csproj",
       "projectName": "RestaurantReservations.API",
-      "projectPath": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS-1\\RestaurantReservations\\src\\RestaurantReservations.API\\RestaurantReservations.API.csproj",
+      "projectPath": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS\\RestaurantReservations\\src\\RestaurantReservations.API\\RestaurantReservations.API.csproj",
       "packagesPath": "C:\\Users\\utilizador\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS-1\\RestaurantReservations\\src\\RestaurantReservations.API\\obj\\",
+      "outputPath": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS\\RestaurantReservations\\src\\RestaurantReservations.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

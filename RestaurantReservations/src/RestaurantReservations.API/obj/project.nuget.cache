@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3k/2Au4DPyU=",
+  "dgSpecHash": "QBhU/qBzAjs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS-1\\RestaurantReservations\\src\\RestaurantReservations.API\\RestaurantReservations.API.csproj",
+  "projectFilePath": "C:\\Users\\utilizador\\Documents\\CTESP\\3semestre\\Trabalho_DOS\\Projeto_DOS\\RestaurantReservations\\src\\RestaurantReservations.API\\RestaurantReservations.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\utilizador\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\utilizador\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
