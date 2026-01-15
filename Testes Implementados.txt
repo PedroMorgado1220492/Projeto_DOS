@@ -15,6 +15,8 @@ Services/ReservationServiceTests.cs (6 testes)
 9. GetReservationByIdAsync_Should_Return_Null_For_Invalid_Id - ID inválido retorna null
 10. DeleteReservationAsync_Should_Return_False_For_Invalid_Id - Delete falha com ID inválido
 11. ReservationServiceTests (setup/constructor) - Configuração ambiente teste
+
+Controllers/ReservationsControllerTests.cs
 12. Post_Should_Return_Created_Reservation - Testa: POST /api/reservations → 201 Created - Verifica: API retorna status 201 e localização do recurso
 13. Get_Should_Return_Ok_With_Reservations - Testa: GET /api/reservations → 200 OK - Verifica: API retorna lista de reservas
 14. GetById_Should_Return_NotFound_For_Invalid_Id - Testa: GET /api/reservations/999 → 404 Not Found - Verifica: API responde corretamente para ID inválido
