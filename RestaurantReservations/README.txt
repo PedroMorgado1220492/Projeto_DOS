@@ -1,46 +1,40 @@
-cd ../..
+PROJETO: RESTAURANT RESERVATIONS API
 
-Para executar a API:
+DESCRIÇÃO:
+API REST para gestão de reservas de mesas em restaurantes.
 
-cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS\RestaurantReservations\src\RestaurantReservations.API"
-ou cd src/RestaurantReservations.API
-dotnet run
-Acessar: http://localhost:5188/swagger
+TECNOLOGIAS:
+- ASP.NET Core 9.0
+- SQL Server 2022
+- Entity Framework Core
+- Docker & Kubernetes
+- Jenkins CI/CD
+- SonarQube
 
-Para executar testes:
+COMANDOS:
 
-cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS\RestaurantReservations\tests\RestaurantReservations.UnitTests"
-ou cd ../../tests/RestaurantReservations.UnitTests
-dotnet test --collect:"XPlat Code Coverage"
+1. INICIAR SQL SERVER:
+   docker-compose up -d sqlserver
 
-Para verificar Docker:
-cd "C:\Users\utilizador\Documents\CTESP\3semestre\Trabalho_DOS\Projeto_DOS\RestaurantReservations"
-ou cd src/RestaurantReservations.API
-docker-compose up -d sqlserver
+2. EXECUTAR API:
+   cd src/RestaurantReservations.API
+   dotnet run
 
+3. EXECUTAR TESTES:
+   cd tests/RestaurantReservations.UnitTests
+   dotnet test
 
-json para POST no Swagger UI:
+4. ACESSAR SWAGGER:
+   http://localhost:5188/swagger
 
-{
-  "customerName": "Pedro Morgado",
-  "reservationDate": "2026-01-15T00:00:00",
-  "reservationTime": "19:30:00",
-  "tableNumber": 5,
-  "numberOfPeople": 4
-}
+ESTRUTURA:
+- src/          - Código da API
+- tests/        - Testes unitários  
+- helm/         - Kubernetes Helm
+- docker-compose.yml - Containers
+- Jenkinsfile   - Pipeline CI/CD
 
-{
-  "customerName": "Miguel Ramos",
-  "reservationDate": "2026-01-16T00:00:00",
-  "reservationTime": "20:00:00",
-  "tableNumber": 3,
-  "numberOfPeople": 2
-}
-
-{
-  "customerName": "Vitor Armando",
-  "reservationDate": "2026	-01-18T00:00:00",
-  "reservationTime": "13:00:00",
-  "tableNumber": 8,
-  "numberOfPeople": 6
-}
+GRUPO: 3 PESSOAS
+1. API REST
+2. Testes + Banco de Dados
+3. DevOps & Infraestrutura

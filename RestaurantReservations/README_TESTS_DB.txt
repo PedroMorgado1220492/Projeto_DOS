@@ -1,3 +1,24 @@
+TESTES + BANCO DE DADOS
+
+RESPONSABILIDADES:
+- Criar testes unitários
+- Configurar SQL Server
+- Gerir migrações Entity Framework
+- Garantir qualidade código
+
+FICHEIROS:
+- tests/ (todos os testes)
+- src/RestaurantReservations.API/Data/
+- docker-compose.yml (apenas SQL Server)
+- RestaurantReservations.sln
+
+COMANDOS:
+cd tests/RestaurantReservations.UnitTests
+dotnet test
+
+INICIAR BD:
+docker-compose up -d sqlserver
+
 TESTES IMPLEMENTADOS:
 Models/ReservationTests.cs (3 testes)
 1. Reservation_Should_Have_Default_CreatedAt - Verifica data criação automática
