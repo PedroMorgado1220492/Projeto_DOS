@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using RestaurantReservations.API.Data;
 using RestaurantReservations.API.DTOs;
 using RestaurantReservations.API.Models;
+using System;
 
 namespace RestaurantReservations.API.Services
 {
@@ -72,21 +73,28 @@ namespace RestaurantReservations.API.Services
 
         public async Task<ReservationDto?> UpdateReservationAsync(int id, UpdateReservationDto dto)
         {
+            // 1. Primeiro encontrar a reserva
             var reservation = await _context.Reservations.FindAsync(id);
             if (reservation == null) return null;
 
-            // Verificar se está atualizando data/hora/mesa
+            // 2. Calcular novos valores (ou manter os antigos)
             var newDate = dto.ReservationDate ?? reservation.ReservationDate;
             var newTime = dto.ReservationTime ?? reservation.ReservationTime;
             var newTable = dto.TableNumber ?? reservation.TableNumber;
 
-            // Verificar conflito (excluindo a própria reserva)
-            if (await HasTimeConflictAsync(newTable, newDate, newTime, id))
+            // 3. Verificar se está mudando dados críticos
+            var isChangingCriticalInfo = 
+                newTable != reservation.TableNumber || 
+                newDate != reservation.ReservationDate || 
+                newTime != reservation.ReservationTime;
+
+            // 4. Só verificar conflito se estiver mudando mesa, data ou hora
+            if (isChangingCriticalInfo && await HasTimeConflictAsync(newTable, newDate, newTime, id))
             {
                 throw new InvalidOperationException($"Mesa {newTable} já está reservada para {newDate:d} às {newTime:hh\\:mm}");
             }
 
-            // Atualizar propriedades se fornecidas
+            // 5. Atualizar propriedades se fornecidas
             if (dto.CustomerName != null) reservation.CustomerName = dto.CustomerName;
             if (dto.ReservationDate.HasValue) reservation.ReservationDate = dto.ReservationDate.Value;
             if (dto.ReservationTime.HasValue) reservation.ReservationTime = dto.ReservationTime.Value;
