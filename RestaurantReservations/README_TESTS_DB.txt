@@ -1,26 +1,23 @@
-API REST - GESTÃO DE RESERVAS
+TESTES + BANCO DE DADOS
 
 RESPONSABILIDADES:
-- Criar endpoints da API
-- Programar lógica de negócio
-- Configurar serviços no Program.cs
-- Gerir appsettings.json
+- Criar testes unitários
+- Configurar SQL Server
+- Gerir migrações Entity Framework
+- Garantir qualidade código
 
 FICHEIROS:
-- Controllers/ReservationsController.cs
-- Services/ReservationService.cs
-- Models/Reservation.cs
-- DTOs/ReservationDto.cs
-- Program.cs
-- appsettings.json
-- Properties/launchSettings.json
+- tests/ (todos os testes)
+- src/RestaurantReservations.API/Data/
+- docker-compose.yml (apenas SQL Server)
+- RestaurantReservations.sln
 
 COMANDOS:
-cd src/RestaurantReservations.API
-dotnet run
+cd tests/RestaurantReservations.UnitTests
+dotnet test
 
-ACESSO:
-http://localhost:5188/swagger
+INICIAR BD:
+docker-compose up -d sqlserver
 
 TESTES IMPLEMENTADOS:
 Models/ReservationTests.cs (3 testes)
