@@ -119,5 +119,35 @@ namespace RestaurantReservations.UnitTests.Services
             // Assert
             Assert.False(result);
         }
+
+        [Fact]
+public async Task UpdateReservationAsync_Should_Allow_Changing_NumberOfPeople_Only()
+{
+    // Arrange - Criar reserva inicial
+    var createDto = new CreateReservationDto
+    {
+        CustomerName = "Test",
+        ReservationDate = DateTime.Today.AddDays(1),
+        ReservationTime = TimeSpan.FromHours(19),
+        TableNumber = 1,
+        NumberOfPeople = 4
+    };
+    
+    var created = await _service.CreateReservationAsync(createDto);
+    
+    // Act - Atualizar apenas número de pessoas
+    var updateDto = new UpdateReservationDto
+    {
+        NumberOfPeople = 6  // ← Apenas muda número de pessoas
+    };
+    
+    var updated = await _service.UpdateReservationAsync(created.Id, updateDto);
+    
+    // Assert
+    Assert.NotNull(updated);
+    Assert.Equal(6, updated.NumberOfPeople);  // Novo valor
+    Assert.Equal(1, updated.TableNumber);     // Mesa mantém
+    Assert.Equal("Test", updated.CustomerName); // Nome mantém
+}
     }
 }
