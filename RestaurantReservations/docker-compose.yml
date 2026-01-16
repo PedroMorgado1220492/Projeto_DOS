@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: restaurant-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    networks:
+      - restaurant-network
+
+  api:
+    build:
+      context: .
+      dockerfile: src/RestaurantReservations.API/Dockerfile
+    container_name: restaurant-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=RestaurantReservationsDB;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
+    ports:
+      - "5000:80"
+      - "5001:443"
+    depends_on:
+      - sqlserver
+    networks:
+      - restaurant-network
+
+networks:
+  restaurant-network:
+    driver: bridge
+
+volumes:
+  sqlserver-data:
