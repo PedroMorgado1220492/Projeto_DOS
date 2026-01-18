@@ -39,7 +39,7 @@ json para POST no Swagger UI:
 
 {
   "customerName": "Vitor Armando",
-  "reservationDate": "2026	-01-18T00:00:00",
+  "reservationDate": "2026-01-18T00:00:00",
   "reservationTime": "13:00:00",
   "tableNumber": 8,
   "numberOfPeople": 6
