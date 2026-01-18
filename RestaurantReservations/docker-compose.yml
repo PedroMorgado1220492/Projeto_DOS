@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -12,28 +10,41 @@ services:
       - "1433:1433"
     volumes:
       - sqlserver-data:/var/opt/mssql
-    networks:
-      - restaurant-network
+    # Healthcheck simplificado e fiável
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 5 bash -c 'cat < /dev/null > /dev/tcp/localhost/1433' || exit 1"]
+      interval: 10s
+      retries: 10
+      start_period: 40s
+      timeout: 5s
+    restart: unless-stopped
 
   api:
     build:
       context: .
-      dockerfile: src/RestaurantReservations.API/Dockerfile
+      dockerfile: Dockerfile
     container_name: restaurant-api
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=RestaurantReservationsDB;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantReservationsDB;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
     ports:
-      - "5000:80"
-      - "5001:443"
+      - "5000:8080"   # HTTP: container:8080 -> host:5000
     depends_on:
-      - sqlserver
-    networks:
-      - restaurant-network
-
-networks:
-  restaurant-network:
-    driver: bridge
+      sqlserver:
+        condition: service_healthy
+    # Healthcheck para a API
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    # Logging para melhor debugging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   sqlserver-data:
