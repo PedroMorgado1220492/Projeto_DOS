@@ -1,43 +1,55 @@
-# Ignorar pastas de build e dependências do .NET
-**/[Bb]in/
-**/[Oo]bj/
-**/.vs/
-**/.vscode/
-
-# Ignorar ficheiros de utilizador e configuração local
+# ============ .NET & BUILD ============
+[Bb]in/
+[Oo]bj/
 *.user
 *.suo
 *.userprefs
+*.cache
+*.pdb
+*.dll
+*.exe
 
-# Ignorar ficheiros de log e diagnósticos
-*.[Ll]og
-[Dd]ebug/
-[Rr]elease/
+# ============ IDE ============
+.vs/
+.vscode/
+.idea/
+*.sln.iml
 
-# Ignorar ficheiros do npm (se aplicável)
-node_modules/
-npm-debug.log
+# ============ TESTES ============
+[Tt]est[Rr]esults/
+*.trx
+*.coverage
+.coverage/
 
-# Ignorar ficheiros de cobertura de testes
-**/.coverage
-**/coverage.*
-**/TestResults/
+# ============ PACOTES ============
+packages/
+*.nupkg
+.nuget/
 
-# Ignorar ficheiros do Git
-.git/
-.gitignore
+# ============ DOCKER (OPCIONAL) ============
+# .docker/  # descomenta se quiseres
+# docker-compose.override.yml
 
-# Ignorar ficheiros de documentação e vários
-**/*.md
-.dockerignore
-Dockerfile*
-docker-compose*
-**/.env
-**/.editorconfig
-**/.toolstarget
+# ============ SISTEMA ============
+Thumbs.db
+.DS_Store
 
-# Não ignorar ficheiros de solução e projeto .NET!
-#!*.sln
-#!**/*.csproj
-#!**/appsettings.json
-#!**/appsettings.*.json
+# ============ CONFIGURAÇÕES LOCAIS ============
+appsettings.Development.json
+appsettings.local.json
+*.db
+.env.local
+*.secrets.json
+
+# ============ NÃO IGNORAR (!) ============
+!*.sln
+!**/*.csproj
+!**/appsettings.json
+!.editorconfig
+!**/*.md
+!**/README.md
+!LICENSE
+!Dockerfile
+!docker-compose.yml
+!.gitignore
+!.dockerignore
