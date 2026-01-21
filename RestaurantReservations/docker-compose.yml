@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -6,6 +8,7 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=YourStrong@Passw0rd
       - MSSQL_PID=Express
+      - MSSQL_DATABASE=RestaurantReservationsDB_DOCKER  # ← CRIA DB AUTOMATICAMENTE
     ports:
       - "1433:1433"
     volumes:
@@ -25,7 +28,9 @@ services:
       dockerfile: Dockerfile
     container_name: restaurant-api
     environment:
-      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantReservationsDB;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:8080
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantReservationsDB_DOCKER;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;  # ← DB DOCKER
     ports:
       - "5000:8080"   # HTTP: container:8080 -> host:5000
     depends_on:
@@ -33,7 +38,7 @@ services:
         condition: service_healthy
     # Healthcheck para a API
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/api/reservations/status || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
