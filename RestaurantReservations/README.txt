@@ -25,7 +25,8 @@ COMANDOS:
    dotnet test
 
 4. ACESSAR SWAGGER:
-   http://localhost:5188/swagger
+   http://localhost:5188/swagger ==> Ambiente de Desenvolvimento
+   http://localhost:5000/swagger ==> Ambiente de Produção
 
 ESTRUTURA:
 - src/          - Código da API
